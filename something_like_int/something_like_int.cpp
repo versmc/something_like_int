@@ -3,9 +3,31 @@
 
 #include <iostream>
 
+#include "cmpt/arithmetic_interface.hpp"
+
 int main()
 {
-    std::cout << "something like int";
+
+	if (1) {
+		using namespace cmpt::arithmetic;
+
+		// int のような型でインクリメント、デクリメント、加算、乗算、比較 が可能なものを定義
+		class SomethingLikeInt : public Comparable<Productable<Addable<Incrementable<StackBase<SomethingLikeInt, int>>>>> {};
+
+		auto i2 = SomethingLikeInt().set(2);
+		auto i3 = i2;
+		i3++;
+		auto i5 = i2 + i3;
+		std::cout << i5.get() << std::endl;
+		auto i6 = i2 * i3;
+		std::cout << i6.get() << std::endl;
+		std::cout << (i2 < i3) << std::endl;
+		std::cout << (i2 == i3) << std::endl;
+	}
+
+	if (1) {
+
+	}
 	return 0;
 }
 
