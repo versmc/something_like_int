@@ -40,11 +40,11 @@ namespace cmpt {
 
 
 		/// <summary>
-		/// 型 StackType を内部に持つクラス定義
+		/// 型 StackType を data_ として内部に持つクラス定義
+		/// get, set, ref で public アクセス可能
+		/// 
 		/// 本クラステンプレートを継承してインターフェースを追加していくが、
 		/// 各インターフェースで使う関数、演算子を StackType_ が持っている必要がある
-		/// 
-		/// 現在 get set ref をもたせているが分離可能
 		/// </summary>
 		template <class Derived_, class StackType_>
 		class StackBase : public CRTPBase<Derived_> {
