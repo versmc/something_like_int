@@ -46,9 +46,10 @@ namespace cmpt {
 		/// 
 		/// 現在 get set ref をもたせているが分離可能
 		/// </summary>
-		template <class Derived, class StackType_>
-		class StackBase : public CRTPBase<Derived> {
+		template <class Derived_, class StackType_>
+		class StackBase : public CRTPBase<Derived_> {
 		public:
+			using Derived=Derived_;
 			using StackType = StackType_;
 
 		protected:
@@ -80,8 +81,11 @@ namespace cmpt {
 		/// </summary>
 		template <class StackBase_>
 		class Incrementable : public StackBase_ {
+
 		public:
+			using StackType=typename StackBase_::StackType;
 			using Derived = typename StackBase_::Derived;
+			
 
 			Derived& operator++() {
 				++this->data_;
