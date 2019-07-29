@@ -9,7 +9,7 @@ int main(){
 	using namespace cmpt::arithmetic;
 	
 	if (1) {
-		// int のような型でインクリメント、デクリメントのみが可能な方を定義
+		// int のような型でインクリメント、デクリメントのみが可能な型を定義
 		class SomethingIncrementable : public Incrementable<StackBase<SomethingIncrementable, int>> {};
 
 		auto i2 = SomethingIncrementable().set(2);
@@ -18,8 +18,8 @@ int main(){
 		SomethingIncrementable i2_copy = i2;	// コピー可能
 
 		// i2 = i2 + i2;					// エラー 加算は定義されていない 
-		// SomethingIncrementable i3{3};	// エラー もととなる方からのコピー不可
-		// int i = i2;						// エラー もととなる方へのコピー不可
+		// SomethingIncrementable i3{3};	// エラー オリジナルの型からの暗黙変換不可
+		// int i = i2;						// エラー オリジナルの型への暗黙変換不可
 	}
 
 	if (1) {
@@ -37,5 +37,18 @@ int main(){
 		std::cout << (i2 == i3) << std::endl;
 	}
 	
+	if (1) {
+
+		class Double : public Comparable<Productable<Addable<StackBase<Double, double>>>> {};
+		
+		auto pi = Double().set(3.14);
+		auto r = Double().set(5.0);
+		auto circ = Double().set(2.0) * pi * r;
+		auto area = pi * r * r;
+		
+
+
+	}
+
 	return 0;
 }
